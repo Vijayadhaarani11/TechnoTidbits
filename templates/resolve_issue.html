@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Issue</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .form{
+            position:absolute;
+            background-color:#CCC;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+<form class="form-horizontal well" method="POST" action ="/view_issue_admin/">
+
+    <a href="https://ibb.co/PjFpLwg"><img src="https://i.ibb.co/g9m12zJ/tt2.jpg" alt="logo" style="width:200px;height:50px;border="0"; /></a>
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="/dashboard_admin/">Dashboard</a>
+          </div>
+        </div>
+      </nav>
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+               <li>{{ message }}</li>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+     <div class="container-fluid">
+         <h1>Updating Ticket Status</h1>
+     </div>
+    <div class="form">
+        <form id="new-user">
+            <input type="text" name="issue_id" placeholder="Issue ID" style="height:100px; width: 500px; margin-bottom: 10px"/> <br>
+            <select name="status" style="height:100px; width:500px;margin-bottom: 30px">
+            <option value="On Progress">On Progress</option>
+                <option value="Resolved">Resolved</option>
+            <option value="Duplicate">Duplicate</option>
+            </select><br>
+            <button type="submit" class="btn btn-primary ">Update Ticket Status</button><br>
+         </form>
+    </div>
+</form>
+</body>
+</html>

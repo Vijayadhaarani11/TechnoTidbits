@@ -1,0 +1,110 @@
+<
+{% set active_page = active_page -%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Dashboard
+
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="../../static/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
+  <link href="../../static/demo/demo.css" rel="stylesheet" />
+</head>
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="azure" data-background-color="btn-white" data-image="../../static/img/sidebar-1.jpg">
+      <div class="logo">
+        <a href="https://ibb.co/PjFpLwg"><img src="https://i.ibb.co/g9m12zJ/tt2.jpg" alt="logo" style="width:200px;height:50px;border="0" /></a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="/course_content/{{ id }}">
+              <i class="material-icons">dashboard</i>
+              <p>Syllabus</p>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/course_video/{{id}}">
+              <i class="material-icons">person</i>
+              <p> Video Lectures</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/course_quiz/{{ id }}">
+              <i class="material-icons">bubble_chart</i>
+              <p>Quiz</p>
+            </a>
+          </li>
+          <!-- <li class="nav-item ">
+            <a class="nav-link" href="./Messages">
+              <i class="material-icons">notifications</i>
+              <p>Messages</p>
+            </a> -->
+          <!-- </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./help">
+              <i class="material-icons">help</i>
+              <p>Help</p> -->
+          <!--   </a>
+          </li> -->
+          <li class="nav-item active-pro ">
+            <a class="nav-link" href="./">
+              <i class="material-icons">arrow_back</i>
+              <p>Log Out</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <a class="navbar-brand" href="/dashboard/">Dashboard</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+        </div>
+      </nav>
+	<div class="content">
+		<main>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Introduction to Deep Learning
+        </div>
+      <img class="card-img-top" src="https://www.python-course.eu/images/circuit_brain.png" alt="Card image cap">
+    </div>
+         <ul>
+			<!-- <iframe width="560" height="315" src="{{ i }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+			{% for i in video_list %}
+				<br>
+				<iframe width="560" height="315" src="{{ i }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<br>
+			{% endfor %}
+		</ul>
+			{% block body %}{% endblock %}
+		</main>
+	</div>
+    <footer class="sticky-footer">
+      	<div class="container">
+        	<div class="text-center">
+          	<small>Copyright © Techno Titbits</small>
+        	</div>
+      	</div>
+    </footer>
+</html>

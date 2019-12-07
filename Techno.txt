@@ -1,0 +1,136 @@
+CREATE TABLE issue(
+    issue_id serial PRIMARY KEY,
+    user_id integer NOT NULL,
+    user_name VARCHAR (50) NOT NULL,
+    subject VARCHAR(500) NOT NULL,
+    message VARCHAR(90000) NOT NULL,
+    status  VARCHAR(50)
+                  );
+
+CREATE TABLE "user" (
+    id serial NOT NULL,
+    first_name varchar(50)  NOT NULL,
+    last_name varchar(50)  NOT NULL,
+    user_name varchar(50)  NOT NULL,
+    email varchar(50)  NOT NULL UNIQUE ,
+    password_hash varchar(100)  NOT NULL,
+    role varchar(10)  NOT NULL,
+    CONSTRAINT user_pk PRIMARY KEY (id)
+);
+
+
+CREATE TABLE course (
+    id int  NOT NULL,
+    course_title varchar(200)  NOT NULL,
+    course_brief varchar(20000)  NOT NULL,
+    instructor_id int ,
+    syllabus varchar(32767)  NOT NULL,
+    time_required_in_hr int  NOT NULL,
+    CONSTRAINT course_pk PRIMARY KEY (id)
+);
+
+
+CREATE TABLE course_topic (
+    id int NOT NULL,
+    course_id int NOT NULL,
+    chapter_title varchar(100)  NOT NULL,
+    num_of_video int  NOT NULL,
+    num_of_quiz int  NOT NULL,
+    topic_description varchar(32767) NULL,
+    CONSTRAINT course_topic_pk PRIMARY KEY (id)
+);
+
+
+insert into course_topic values
+(3333,226,'(i) Introduction to Deep Learning',1,1,'Deep learning is a branch of machine learning which is completely based on artificial neural networks, as neural network is going to mimic the human brain so deep learning is also a kind of mimic of human brain. In deep learning, we dont need to explicitly program everything'),
+(3334,226,'(ii) Logistic Regression',1,1,'Logistic regression is a statistical model that in its basic form uses a logistic function to model a binary dependent variable, although many more complex extensions exist. In regression analysis, logistic regression is estimating the parameters of a logistic model'),
+(3335,226,'(iii) Convolutional Neural Network',1,1,'Convolutional neural networks. Sounds like a weird combination of biology and math with a little CS sprinkled in, but these networks have been some of the most influential innovations in the field of computer vision. 2012 was the first year that neural nets grew to prominence as Alex Krizhevsky used them to win that year’s ImageNet competition (basically, the annual Olympics of computer vision), dropping the classification error record from 26% to 15%, an astounding improvement at the time.Ever since then, a host of companies have been using deep learning at the core of their services'),
+(3336,226,'(iv) Artificial Neural Network',1,1,'An artificial neural network is an interconnected group of nodes, inspired by a simplification of neurons in a brain. Here, each circular node represents an artificial neuron and an arrow represents a connection from the output of one artificial neuron to the input of another'),
+(3337,226,'(v) Feedforward Neural Network',1,1,'A feedforward neural network is an artificial neural network wherein connections between the nodes do not form a cycle. As such, it is different from recurrent neural networks. The feedforward neural network was the first and simplest type of artificial neural network devised'),
+(3338,226,'(vi)Gradient Descent',1,1,'Gradient descent is an optimization algorithm used to minimize some function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model'),
+(3339,222,'(i) Supervised Learning Algorithms: Regression and Classification',1,1,'The difference between regression machine learning algorithms and classification machine learning algorithms sometimes confuse most data scientists, which make them to implement wrong methodologies in solving their prediction problems.Andreybu, who is from Germany and has more than 5 years of machine learning experience, says that understanding whether the machine learning task is a regression or classification problem is key for selecting the right algorithm to use'),
+(3340,222,'(ii) Unsupervised Learning Algorithms: Clustering, Neural Networks and Principal Component Analysis',1,1,'How do you find the underlying structure of a dataset? How do you summarize it and group it most usefully? How do you effectively represent data in a compressed format? These are the goals of unsupervised learning, which is called “unsupervised” because you start with unlabeled data.The two unsupervised learning tasks we will explore are clustering the data into groups by similarity and reducing dimensionality to compress the data while maintaining its structure and usefulness'),
+(3341,222,'(iii) Image classification Case Studies',1,1,'Image classification refers to a process in computer vision that can classify an image according to its visual content. For example, an image classification algorithm may be designed to tell if an image contains a human figure or not. While detecting an object is trivial for humans, robust image classification is still a challenge in computer vision applications'),
+(3342,223,'(i) Introduction to R',1,1,'In Introduction to R, you will master the basics of this widely used open source language, including factors, lists, and data frames. With the knowledge gained in this course, you will be ready to undertake your first very own data analysis. Oracle estimated over 2 million R users worldwide in 2012, cementing R as a leading programming language in statistics and data science. Every year, the number of R users grows by about 40%, and an increasing number of organizations are using it in their day-to-day activities. Begin your journey to learn R with us today'),
+(3343,223,'(ii) Introduction to Statistics, Random variables, Distributions, Non-parametric statistics',1,1,'A large portion of the field of statistics and statistical methods is dedicated to data where the distribution is known.Samples of data where we already know or can easily identify the distribution of are called parametric data. Often, parametric is used to refer to data that was drawn from a Gaussian distribution in common usage. Data in which the distribution is unknown or cannot be easily identified is called nonparametric.In the case where you are working with nonparametric data, specialized nonparametric statistical methods can be used that discard all information about the distribution'),
+(3344,223,'(iii) Inference: p-values and confidence intervals',1,1,'P-values in scientific studies are used to determine whether a null hypothesis formulated before the performance of the study is to be accepted or rejected. In exploratory studies, p-values enable the recognition of any statistically noteworthy findings. Confidence intervals provide information about a range in which the true value lies with a certain degree of probability, as well as about the direction and strength of the demonstrated effect. This enables conclusions to be drawn about the statistical plausibility and clinical relevance of the study findings. It is often useful for both statistical measures to be reported in scientific articles, because they provide complementary types of information'),
+(3345,223,'(iv) Exploratory Data Analysis',1,1,'Imagine your wolf pack decides to watch a movie you have not heard of.There is absolutely no debate about that,it will lead to a state where you find yourself puzzled with lot of questions which needs to be answered in order to make a decision.Being a good chieftain the first question you would ask, what is the cast and crew of the movie?As a regular practice,you would also watch the trailer of the movie on YouTube.Furthermore,you’d find out ratings and reviews the movie has received from the audience.Whatever investigating measures you would take before finally buying popcorn for your clan in theater,is nothing but what data scientists in their lingo call Exploratory Data Analysis'),
+(3346,224,'(i) The fundamental design cycle of computer science and computer programming in Python',1,1,'Python is a scripting programming language known for both its simplicity and wide breadth of applications. For this reason it is considered one of the best languages for beginners. Used for everything from Web Development to Scientific Computing (and SO much more), Python is referred to as a general purpose language by the greater programming community.Many Python programmers love this language because it maintains a certain philosophy of best practices, described in Tim Peter’s famous Zen of Python. There is a large Python community both off and online that is welcoming and supportive of beginners, and you can find a plethora of additional materials in the resources section of this guide'),
+(3347,224,'(ii) Usage of the fundamental atoms of python programming',1,1,'Most of us have been introduced to Python as an object-oriented language, but Python functions are also useful tools for data scientists and programmers alike. While classes, and objects, are easy to start working with, there are other ways to write your Python code. Languages like Java can make it hard to move away from object-oriented thinking, but Python makes it easy.Given that Python facilitates different approaches to writing code, a logical follow-up question is: what is a different way to write code? While there are several answers to this question, the most common alternative style of writing code is called functional programming.Functional programming gets its name from writing functions which provides the main source of logic in a program'),
+(3348,224,'(iii) Control structures for developing dynamic programs in Python',1,1,'Dynamic Programming is mainly an optimization over plain recursion. Wherever we see a recursive solution that has repeated calls for same inputs, we can optimize it using Dynamic Programming. The idea is to simply store the results of subproblems, so that we do not have to re-compute them when needed later. This simple optimization reduces time complexity from exponential to polynomial. For example, if we write simple recursive solution for Fibonacci Numbers, we get exponential time complexity and if we optimize it by storing solutions of subproblems, time complexity reduces to linear'),
+(3349,225,'(i) Basic arithmetic and variables in Python',1,1,'Operators are special symbols in Python that carry out arithmetic or logical computation. The value that the operator operates on is called the operand.Arithmetic operators are used to perform mathematical operations like addition, subtraction, multiplication etc.Comparison operators are used to compare values. It either returns True or False according to the condition.Logical operators are the and, or, not operators.Bitwise operators act on operands as if they were string of binary digits. It operates bit by bit, hence the name'),
+(3350,225,'(ii) Data structures: Python lists, Numpy arrays, and Pandas DataFrames',1,1,'At the very basic level, Pandas objects can be thought of as enhanced versions of NumPy structured arrays in which the rows and columns are identified with labels rather than simple integer indices. As we will see during the course of this chapter, Pandas provides a host of useful tools, methods, and functionality on top of the basic data structures, but nearly everything that follows will require an understanding of what these structures are. Thus, before we go any further, lets introduce these three fundamental Pandas data structures: the Series, DataFrame, and Index'),
+(3351,225,'(iii) Python functions and control flow',1,1,'In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing Good Morning or Good Evening depending on the time of the day?As you might have guessed, this is achieved using control flow statements. There are three control flow statements in Python - if, for and while'),
+(3352,225,'(iv) Data visualizations with Python',1,1,'Data visualization is the discipline of trying to understand data by placing it in a visual context so that patterns, trends and correlations that might not otherwise be detected can be exposed.Python offers multiple great graphing libraries that come packed with lots of different features. No matter if you want to create interactive, live or highly customized plots python has an excellent library for you'),
+(3353,227,'(i) Introduction to Java',1,1,'Java is an object-oriented, cross platform, multi-purpose programming language produced by Sun Microsystems. First released in 1995, it was developed to be a machine independent web technology. It was based on C and C++ syntax to make it easy for programmers from those communities to learn'),
+(3354,227,'(ii) Functional abstraction',1,1,'Programming languages like Java are designed to support you in creating abstractions. You are already familiar with one kind of abstraction, a function abstraction. Every time you declare a function , you are creating an abstraction by giving a name to a piece of code'),
+(3355,227,'(iii) Object Oriented Programming paradigm',1,1,'Object-oriented programming is a programming paradigm based on the concept of "objects", which can contain data, in the form of fields, and code, in the form of procedures. A feature of objects is an objects procedures that can access and often modify the data fields of the object with which they are associated'),
+(3356,227,'(iv) Application Programming Interfaces',1,1,'An application programming interface (API) is an interface or communication protocol between different parts of a computer program intended to simplify the implementation and maintenance of software. An API may be for a web-based system, operating system, database system, computer hardware, or software library')
+
+
+
+(222,'Machine Learning Fundamentals','In this course, you will learn a variety of supervised and unsupervised learning algorithms, and the theory behind those algorithms. Using real-world case studies, you will learn how to classify images, identify salient topics in a corpus of documents, partition people according to personality profiles, and automatically capture the semantic structure of words and use it to categorize documents. Armed with the knowledge from this course, you will be able to analyze many different types of data and to build descriptive and predictive models. All programming examples and assignments will be in Python, using Jupyter notebooks.',333,'(i) Supervised Learning Algorithms: Regression and Classification  (ii)  Unsupervised Learning Algorithms: Clustering, Neural Networks and Principal Component Analysis (iii)Image classification Case Studies', 6),
+(223,'Statistics and R','We will learn the basics of statistical inference in order to understand and compute p-values and confidence intervals, all while analyzing data with R. We provide R programming examples in a way that will help make the connection between concepts and implementation. Problem sets requiring R programming will be used to test understanding and ability to implement basic data analyses. We will use visualization techniques to explore new data sets and determine the most appropriate approach. We will describe robust statistical techniques as alternatives when data do not fit assumptions required by the standard approaches. By using R scripts to analyze data, you will learn the basics of conducting reproducible research. Given the diversity in educational background of our students we have divided the series into seven parts. You can take the entire series or individual courses that interest you. If you are a statistician you should consider skipping the first two or three courses, similarly, if you are biologists you should consider skipping some of the introductory biology lectures. Note that the statistics and programming aspects of the class ramp up in difficulty relatively quickly across the first three courses. By the third course will be teaching advanced statistical concepts such as hierarchical models and by the fourth advanced software engineering skills',332,'(i)Introduction to R  (ii) Introduction to Statistics, Random variables, Distributions, Non-parametric statistics (iii)Inference: p-values and confidence intervals  (iv) Exploratory Data Analysis',6),
+(224,'Introduction to Python Programming','The fundamental design cycle of computer science and computer programming: writing code, executing it, interpreting the results, and revising the code based on the outcomes. Usage of the fundamental atoms of programming: variables, mathematical operators, logical operators, and boolean arithmetic. Control structures for developing dynamic programs: conditionals, loops, functions, and error handling. The core data structures for creating useful programs: strings, lists, dictionaries, and file manipulation. Previews of the next big topics in computer science: object-oriented programming and computer algorithms',332,'(i)The fundamental design cycle of computer science and computer programming in Python (ii) Usage of the fundamental atoms of python programming (iii) Control structures for developing dynamic programs in Python',5)
+insert into course values
+(225,'Python for Data Science','In this practical course, you will start from the very beginning, with basic arithmetic and variables, and learn how to handle data structures, such as Python lists, Numpy arrays, and Pandas DataFrames. Along the way, you’ll learn about Python functions and control flow. Plus, you’ll look at the world of data visualizations with Python and create your own stunning visualizations based on real data',334,'(i)Basic arithmetic and variables in Python (ii) Data structures: Python lists, Numpy arrays, and Pandas DataFrames  (iii) Python functions and control flow (iv) Data visualizations with Python',5),
+(226,'Fundamentals of Artificial Intelligence and Deep Learning','Machine learning uses computers to run predictive models that learn from existing data to forecast future behaviors, outcomes, and trends. Deep learning is a sub-field of machine learning, where models inspired by how our brain works are expressed mathematically, and the parameters defining the mathematical models, which can be in the order of few thousands to 100+ million, are learned automatically from the data. Deep learning is a key enabler of AI powered technologies being developed across the globe. In this deep learning course, you will learn an intuitive approach to building complex models that help machines solve real-world problems with human-like intelligence. The intuitive approaches will be translated into working code with practical problems and hands-on experience. You will learn how to build and derive insights from these models using Python Jupyter notebooks running on your local Windows or Linux machine, or on a virtual machine running on Azure. This course provides the level of detail needed to enable engineers / data scientists / technology managers to develop an intuitive understanding of the key concepts behind this game changing technology. At the same time, you will learn simple yet powerful motifs that can be used with lego-like flexibility to build an end-to-end deep learning model',333,' (i)Introduction to Deep Learning  (ii) Logistic Regression  (iii)Convolutional Neural Network (iv) Artificial Neural Network  (v) Feedforward Neural Network  (vi) Gradient Descent',8),
+(227,'Introduction to Java Programming','In this introductory Java programming course, you will be introduced to powerful concepts such as functional abstraction, the object oriented programming (OOP) paradigm and Application Programming Interfaces (APIs). Examples and case studies will be provided so that you can implement simple programs on your own or collaborate with peers. Emphasis is put on immediate feedback and on having a fun experience. Programming knowledge is not only useful to be able to program today’s devices such as computers and smartphones. It also opens the door to computational thinking, i.e. the application of computing techniques to every-day processes',333,'(i) Introduction to Java  (ii) Functional abstraction  (iii) Object Oriented Programming (OOP) paradigm  (iv) Application Programming Interfaces',7)
+
+
+
+CREATE TABLE course_video(
+  id int NOT NULL PRIMARY KEY ,
+  course_id int NOT NULL,
+  video_url varchar(100) NOT NULL,
+  time_required_in_min int  NOT NULL
+);
+
+select * from course_topic_content
+Insert into course_video values
+(444,222,'https://www.youtube.com/embed/5v1JnYv_yWs',50),
+(445,222,'https://www.youtube.com/embed/zAULhNrnuL4',60),
+(446,222,'https://www.youtube.com/embed/YRhxdVk_sIs',40),
+(447,222,'https://www.youtube.com/embed/hfK_dvC-avg',60),
+(448,222,'https://www.youtube.com/embed/jTzJ9zjC8nU',30),
+(449,222,'https://www.youtube.com/embed/sDv4f4s2SB8',40),
+(450,222,'https://www.youtube.com/embed/TJveOYsK6MY',50),
+(451,222,'https://www.youtube.com/embed/8dqdDEyzkFA',60),
+(452,222,'https://www.youtube.com/embed/5Gp5xLbiAr0',80),
+(453,222,'https://www.youtube.com/embed/3v9w79NhsfI',50),
+(454,222,'https://www.youtube.com/embed/SWxoJqTqo08',70),
+(455,222,'https://www.youtube.com/embed/51uXJkVf-kk',30),
+(456,222,'https://www.youtube.com/embed/zHcQPKP6NpM',40),
+(457,222,'https://www.youtube.com/embed/Z1Yd7upQsXY',50),
+(458,222,'https://www.youtube.com/embed/DjEuROpsvp4',60),
+(459,222,'https://www.youtube.com/embed/kIPpTYjareA',50),
+(460,222,'https://www.youtube.com/embed/XM0CtrJYM2A',40),
+(461,222,'https://www.youtube.com/embed/XI6PHo_gP4E',70),
+(462,222,'https://www.youtube.com/embed/Zp5MuPOtsSY',40),
+(463,222,'https://www.youtube.com/embed/a9UrKTVEeZA',50),
+(464,222,'https://www.youtube.com/embed/GoXwIVyNvX0',30),
+(465,222,'https://www.youtube.com/embed/K0JLuT5XCD4',40),
+(466,222,'https://www.youtube.com/embed/pTB0EiLXUC8',60),
+(467,222,'https://www.youtube.com/embed/B9vPoCOP7oY',50)
+
+DROP TABLE quiz
+
+CREATE TABLE quiz (
+    id int  NOT NULL,
+	course_id int NOT NULL,
+    question varchar(100000) NOT NULL,
+    que_option varchar(10000) NOT NULL,
+	correct_ans int NOT NULL,
+    points_possible int  NOT NULL,
+    CONSTRAINT quiz_pk PRIMARY KEY (id)
+);
+
+select * from quiz
+
+Insert into quiz values
+(555, 222, '"Question": "1.)Which of the following statement is true in following case?"', '"1.)Feature F1 is an example of nominal variable","2.)Feature F1 is an example of ordinal variable","3.)It doesn’t belong to any of the above category","4.)Both of these"' , 2, 10 ),
+(556, 222, '"Question": "2.)Which of the following is an example of a deterministic algorithm?"', '"1.)PCA","2.)K-Means","3.) None of the above"' , 1, 10 ),
+(557, 222, '"Question": "3.)A Pearson correlation between two variables is zero but, still their values can still be related to each other?"', '"1.)True","2.)False"' , 1, 10 ),
+(558, 222, '"Question": "4.)In GD and SGD, you update a set of parameters in an iterative manner to minimize the error function?"', '"1.)True","2.)False"' , 1, 10 ),
+(559, 222, '"Question": "5.)when Depth of Tree is increased will cause random forest to over fit the data?"', '"1.)True","2.)False"' , 1, 10 )
+
